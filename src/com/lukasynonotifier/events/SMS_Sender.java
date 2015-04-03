@@ -15,6 +15,11 @@ public class SMS_Sender {
 	private static Context context = null;
 	private static String targetNumber = null;
 	private static String targetMessage = null;
+
+	//needed for polymorphism
+//	public void performTask(){
+//		sendSMS(targetNumber, targetMessage);
+//	}
 	
 	public static void setTargetNumber(String targetNumber) {
 		SMS_Sender.targetNumber = targetNumber;

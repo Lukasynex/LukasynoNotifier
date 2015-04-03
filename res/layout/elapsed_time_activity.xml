@@ -6,49 +6,29 @@
     android:orientation="vertical"
     tools:context=".MainActivity" >
 
-    <Button
-        android:id="@+id/button11"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="Start SMSing"
-        android:onClick="startAlarm" />
-
-    <Button
-        android:id="@+id/button22"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="Cancel Alarm"
-        android:onClick="cancelAlarm" />
+    <View android:layout_height="10sp" />
 
     <EditText
-        android:id="@+id/editText11"
+        android:id="@+id/delayedit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="number" >
-
-        <requestFocus />
-    </EditText>
-
-    <TextView
-        android:id="@+id/infotext"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="" />
+        android:hint="delay time (min)"
+        android:inputType="number" />
 
     <EditText
-        android:id="@+id/number2sent"
+        android:id="@+id/intervaledit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="input number here"
-        android:inputType="number"
-        android:ems="10" />
+        android:ems="10"
+        android:hint="interval time (min)"
+        android:inputType="number" />
 
-    <EditText
-        android:id="@+id/message2sent"
-        android:layout_width="match_parent"
+    <Button
+        android:id="@+id/interval_starter"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:hint="input message here"
-        android:ems="10" />
+        android:onClick="startAlarm"
+        android:text="Start Alarm" />
 
 </LinearLayout>
