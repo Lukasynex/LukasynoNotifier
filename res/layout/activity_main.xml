@@ -1,0 +1,44 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/LinearLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity" >
+
+    <Button
+        android:id="@+id/button11"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Create interval alarm"
+        android:onClick="createElapsedAlarm" />
+
+    <Button
+        android:id="@+id/button22"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Create Calendar Alarm"
+        android:onClick="createCalendarAlarm" />
+    <Button
+        android:id="@+id/button333"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Cancel all alarms"
+        android:onClick="cancelAlarms" />
+
+    <EditText
+        android:id="@+id/number2sent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="input number here"
+        android:inputType="number"
+        android:ems="10" />
+
+    <EditText
+        android:id="@+id/message2sent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="input message here"
+        android:ems="10" />
+
+</LinearLayout>
