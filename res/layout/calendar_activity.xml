@@ -27,6 +27,13 @@
         android:id="@+id/prepareAlarm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="prepareAlarm"
         android:text="Set Alarm" />
+
+    <TextView
+        android:id="@+id/logcal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="" />
 
 </LinearLayout>

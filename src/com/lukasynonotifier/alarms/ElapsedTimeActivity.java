@@ -6,8 +6,10 @@ import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.lukasynonotifier.events.ColorTransition;
 import com.lukasynonotifier.events.Player;
 import com.lukasynonotifier.setup.CoreApplication;
 import com.lukasynonotifier.setup.R;
@@ -28,6 +30,9 @@ public class ElapsedTimeActivity extends AbstractAlarmActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.elapsed_time_activity);
 		Player.getInstance(this);
+		final LinearLayout lay = (LinearLayout) findViewById(R.id.LinearLayoutelapsed);
+		ColorTransition.start(this, lay);
+	
 	}
 
 	@Override

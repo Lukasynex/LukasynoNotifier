@@ -18,7 +18,12 @@ import com.lukasynonotifier.alarms.AbstractAlarmActivity;
 import com.lukasynonotifier.alarms.CalendarActivity;
 import com.lukasynonotifier.alarms.ElapsedTimeActivity;
 import com.lukasynonotifier.events.ColorTransition;
-
+/**
+ * 
+ * @author Lukas
+ *TODO:
+ *make activity for registered alarms
+ */
 public class SetupAlarmActivity extends Activity {
 	public static final String TARGET_NUMBER = "number";
 	public static final String TARGET_MESSAGE = "message";
@@ -56,10 +61,19 @@ public class SetupAlarmActivity extends Activity {
 	}
 
 	public void cancelAlarms(View view) {
+		TextView txt = (TextView) findViewById(R.id.logger323);
+		String numb = "";
+		int howMuch = CoreApplication.AlarmListLength();
+		switch (howMuch % 10) {
+		case 2:
+		case 3:
+		case 4:
+			numb = howMuch + " elementy";
+			break;
+		default:
+			numb = howMuch + " elementów";
+		}
+		txt.setText("Anulowano "+numb);
 		CoreApplication.cancelAlarms();
-//		Toast.makeText(this, , Toast.LENGTH_LONG);
-		TextView txt = (TextView)findViewById(R.id.logger323);
-		txt.setText("liczba elementów: "
-				+ CoreApplication.AlarmListLength());
 	}
 }

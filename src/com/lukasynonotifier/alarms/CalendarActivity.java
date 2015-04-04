@@ -4,12 +4,17 @@ import java.util.Calendar;
 import java.util.Date;
 
 import android.app.AlarmManager;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.DatePicker;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.TimePicker;
 
+import com.lukasynonotifier.events.ColorTransition;
 import com.lukasynonotifier.events.Player;
+import com.lukasynonotifier.setup.CoreApplication;
 import com.lukasynonotifier.setup.R;
 
 public class CalendarActivity extends AbstractAlarmActivity {
@@ -22,6 +27,8 @@ public class CalendarActivity extends AbstractAlarmActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.calendar_activity);
 		Player.getInstance(this);
+		final LinearLayout lay = (LinearLayout) findViewById(R.id.LinearCalendarLayout);
+		ColorTransition.start(this, lay);
 	}
 
 	@Override
@@ -43,10 +50,14 @@ public class CalendarActivity extends AbstractAlarmActivity {
 		calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
 		calendar.set(Calendar.MONTH, month);
 		calendar.set(Calendar.YEAR, year);
-		
+		CoreApplication.addAlarm(this);
 		date = calendar.getTime();
-		
-		manager.set(AlarmManager.RTC, date.getTime(), pendingIntent);
+//		Calendar cal = Calendar.getInstance();
+//		cal.getTime()
+		manager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+		manager.set(AlarmManager.RTC_WAKEUP, date.getTime(), pendingIntent);
+		TextView gg = (TextView)findViewById(R.id.logcal);
+		gg.setText(date.getTime()+" alarm set.");
 	}
 
 }
