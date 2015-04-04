@@ -1,47 +1,48 @@
 package com.lukasynonotifier.alarms;
 
-import android.app.Activity;
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 
-import com.lukasynonotifier.events.SMS_Sender;
+import com.lukasynonotifier.events.Player;
 import com.lukasynonotifier.setup.R;
+import com.lukasynonotifier.setup.SetupAlarmActivity;
 
-public class ElapsedTimeActivity extends Activity {
+public class ElapsedTimeActivity extends AbstractAlarmActivity {
 	public final static String TARGET_NUMBER = "number";
 	public final static String TARGET_MESSAGE = "message";
+
+	private long delay = AlarmManager.INTERVAL_HALF_HOUR;
+	private long interval = AlarmManager.INTERVAL_HALF_HOUR;
+
 	private String phoneNumber = null;
 	private String message = null;
-	private ElapsedTimeAlarm alarm = null;
 
-	public void onCreate(Bundle savedInstanceState) {
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.elapsed_time_activity);
-		Bundle bundle = getIntent().getExtras();
-
-		if (bundle.getString(TARGET_MESSAGE) != null
-				&& bundle.getString(TARGET_NUMBER) != null) {
-			message = bundle.getString(TARGET_MESSAGE);
-			phoneNumber = bundle.getString(TARGET_NUMBER);
-		} else
-			finish();
+		Player.getInstance(this);
 	}
 
-	public void startAlarm(View v) {
-		SMS_Sender.setTargetMessage(message);
-		SMS_Sender.setTargetNumber(phoneNumber);
-		
+	@Override
+	public void prepareAlarm(View v) {
 		final EditText inputDelay = (EditText) findViewById(R.id.delayedit);
 		final EditText inputInterval = (EditText) findViewById(R.id.intervaledit);
-		alarm = new ElapsedTimeAlarm(this);
-		long delay = 1000 * 60 * Integer.parseInt(inputDelay.getText()
-				.toString());
-		long interval = 1000 * 60 * Integer.parseInt(inputInterval.getText()
-				.toString());
+		final TextView logger = (TextView) findViewById(R.id.elapsed_log);
 
-		alarm.setDelay(delay);
-		alarm.setInterval(interval);
-		alarm.startAlarm();
+		SetupAlarmActivity.registerAlarm(this);
+		delay = 1000 * 60 * Integer.parseInt(inputDelay.getText().toString());
+		interval = 1000 * 60 * Integer.parseInt(inputInterval.getText()
+				.toString());
+		logger.setText("Alarm set. Delay is " + delay / 60000 + " min long.");
+		manager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+		manager.setRepeating(AlarmManager.RTC_WAKEUP, delay, interval,
+				pendingIntent);
 	}
+
 }

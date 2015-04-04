@@ -22,6 +22,9 @@
 	<string name="remaining">time remaining to execute alarm.</string>
 	
 	<string name="hint_time">minutes...</string>
+	<string name="elapsed_activity">Set interval alarm</string>
+	<string name="calendar_activity">Set date for alarm</string>
+	
 	
 
 </resources>

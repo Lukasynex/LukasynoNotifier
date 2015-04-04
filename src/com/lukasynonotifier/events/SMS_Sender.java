@@ -16,36 +16,36 @@ public class SMS_Sender {
 	private static String targetNumber = null;
 	private static String targetMessage = null;
 
-	//needed for polymorphism
-//	public void performTask(){
-//		sendSMS(targetNumber, targetMessage);
-//	}
-	
 	public static void setTargetNumber(String targetNumber) {
 		SMS_Sender.targetNumber = targetNumber;
 	}
+
 	public static void setTargetMessage(String targetMessage) {
 		SMS_Sender.targetMessage = targetMessage;
 	}
-	public static void setContext(Context c){
+
+	public static void setContext(Context c) {
 		context = c;
-			
+
 	}
-	private static Context getBaseContext(){
+
+	private static Context getBaseContext() {
 		return context.getApplicationContext();
 	}
-	public static void sendPreparedSMS(){
-		if(targetMessage != null && targetNumber != null)
+
+	public static void sendPreparedSMS() {
+		if (targetMessage != null && targetNumber != null)
 			sendSMS(targetNumber, targetMessage);
 	}
+
 	public static void sendSMS(String phoneNumber, String message) {
-		if(context==null)
+		if (context == null)
 			return;
 		String SENT = "SMS_SENT";
 		String DELIVERED = "SMS_DELIVERED";
 
-		PendingIntent sentPI = PendingIntent.getBroadcast(context, 0, new Intent(
-				SENT), 0);
+		PendingIntent sentPI = PendingIntent.getBroadcast(context, 0,
+				new Intent(SENT), 0);
 
 		PendingIntent deliveredPI = PendingIntent.getBroadcast(context, 0,
 				new Intent(DELIVERED), 0);
@@ -100,6 +100,7 @@ public class SMS_Sender {
 		sms.sendTextMessage(phoneNumber, null, message, sentPI, deliveredPI);
 
 	}
+
 	public static String getMonthInPolish(Calendar calendar) {
 		switch (calendar.get(Calendar.MONTH)) {
 		case Calendar.JANUARY: {

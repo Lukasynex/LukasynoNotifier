@@ -25,11 +25,21 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
+		<activity 
+		    android:name="com.lukasynonotifier.alarms.CalendarActivity"
+		    android:label="@string/calendar_activity">
+		</activity>
+        
+        <activity 
+		    android:name="com.lukasynonotifier.alarms.ElapsedTimeActivity"
+		    android:label="@string/elapsed_activity">
+        </activity>
+        
+        
         <receiver 
-            
             android:name="com.lukasynonotifier.setup.AlarmReceiver" >
         </receiver>
+        
     </application>
 
 </manifest>

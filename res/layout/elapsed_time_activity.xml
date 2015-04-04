@@ -1,12 +1,10 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/LinearLayout1"
+    android:id="@+id/LinearLayoutelapsed"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity" >
-
-    <View android:layout_height="10sp" />
+    tools:context="com.lukasynonotifier.alarms.ElapsedTimeActivity" >
 
     <EditText
         android:id="@+id/delayedit"
@@ -28,7 +26,13 @@
         android:id="@+id/interval_starter"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:onClick="startAlarm"
+        android:onClick="prepareAlarm"
         android:text="Start Alarm" />
+
+    <TextView
+        android:id="@+id/elapsed_log"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="" />
 
 </LinearLayout>
