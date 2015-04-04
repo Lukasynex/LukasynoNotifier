@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.lukasynonotifier.alarms.AbstractAlarmActivity;
 import com.lukasynonotifier.alarms.CalendarActivity;
@@ -21,7 +22,6 @@ import com.lukasynonotifier.events.ColorTransition;
 public class SetupAlarmActivity extends Activity {
 	public static final String TARGET_NUMBER = "number";
 	public static final String TARGET_MESSAGE = "message";
-	private static List<AbstractAlarmActivity> alarms = new ArrayList<AbstractAlarmActivity>();
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -55,16 +55,11 @@ public class SetupAlarmActivity extends Activity {
 		startActivity(intent);
 	}
 
-	public static void addAlarm(AbstractAlarmActivity al) {
-		alarms.add(al);
-	}
-
 	public void cancelAlarms(View view) {
-		for (AbstractAlarmActivity every_alarm : alarms)
-			every_alarm.cancelAlarm();
-	}
-
-	public static void registerAlarm(AbstractAlarmActivity activity) {
-		alarms.add(activity);
+		CoreApplication.cancelAlarms();
+//		Toast.makeText(this, , Toast.LENGTH_LONG);
+		TextView txt = (TextView)findViewById(R.id.logger323);
+		txt.setText("liczba elementów: "
+				+ CoreApplication.AlarmListLength());
 	}
 }

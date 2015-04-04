@@ -24,6 +24,10 @@ public abstract class AbstractAlarmActivity extends Activity {
 			manager.cancel(pendingIntent);
 	}
 
+	/**
+	 * corresponds to Button click
+	 * @param v
+	 */
 	public abstract void prepareAlarm(View v);
 
 }

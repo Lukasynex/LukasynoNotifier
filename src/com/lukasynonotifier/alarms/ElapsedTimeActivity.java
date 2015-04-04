@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.lukasynonotifier.events.Player;
+import com.lukasynonotifier.setup.CoreApplication;
 import com.lukasynonotifier.setup.R;
 import com.lukasynonotifier.setup.SetupAlarmActivity;
 
@@ -35,7 +36,7 @@ public class ElapsedTimeActivity extends AbstractAlarmActivity {
 		final EditText inputInterval = (EditText) findViewById(R.id.intervaledit);
 		final TextView logger = (TextView) findViewById(R.id.elapsed_log);
 
-		SetupAlarmActivity.registerAlarm(this);
+		CoreApplication.addAlarm(this);
 		delay = 1000 * 60 * Integer.parseInt(inputDelay.getText().toString());
 		interval = 1000 * 60 * Integer.parseInt(inputInterval.getText()
 				.toString());

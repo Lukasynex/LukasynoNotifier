@@ -41,4 +41,10 @@
         android:hint="input message here"
         android:ems="10" />
 
+    <TextView
+        android:id="@+id/logger323"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="" />
+
 </LinearLayout>
