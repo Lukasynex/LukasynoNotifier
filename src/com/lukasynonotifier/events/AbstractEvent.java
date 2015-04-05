@@ -1,9 +1,16 @@
 package com.lukasynonotifier.events;
 
-public abstract class AbstractEvent {
+import android.content.Context;
 
-	public AbstractEvent() {
+public abstract class AbstractEvent {
+	protected Context context;
+
+	public AbstractEvent(Context context) {
 		// TODO Auto-generated constructor stub
+		this.context = context;
 	}
 
+	public abstract void performAction();
+
+	public abstract void onPrepare();
 }

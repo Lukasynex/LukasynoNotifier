@@ -28,13 +28,18 @@ public class CalendarActivity extends AbstractAlarmActivity {
 		setContentView(R.layout.calendar_activity);
 		Player.getInstance(this);
 		final LinearLayout lay = (LinearLayout) findViewById(R.id.LinearCalendarLayout);
-		ColorTransition.start(this, lay);
+		ColorTransition.start(lay);
+		final TextView info = (TextView)findViewById(R.id.logcal);
+
+		info.setText("Current time: "+Calendar.getInstance().getTime().toString());
 	}
 
 	@Override
 	public void prepareAlarm(View v) {
 		final TimePicker timepicker = (TimePicker) findViewById(R.id.timePicker1);
 		final DatePicker datepicker = (DatePicker) findViewById(R.id.datePicker1);
+		final TextView info = (TextView)findViewById(R.id.logcal);
+
 		timepicker.clearFocus();
 		int hours = timepicker.getCurrentHour();
 		int minutes = timepicker.getCurrentMinute();
@@ -43,7 +48,6 @@ public class CalendarActivity extends AbstractAlarmActivity {
 		int year = datepicker.getYear();
 		int month = datepicker.getMonth();
 		Calendar calendar = Calendar.getInstance();
-
 		calendar.set(Calendar.MINUTE, minutes);
 		calendar.set(Calendar.HOUR, hours);
 
@@ -51,13 +55,9 @@ public class CalendarActivity extends AbstractAlarmActivity {
 		calendar.set(Calendar.MONTH, month);
 		calendar.set(Calendar.YEAR, year);
 		CoreApplication.addAlarm(this);
-		date = calendar.getTime();
-//		Calendar cal = Calendar.getInstance();
-//		cal.getTime()
+		
 		manager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-		manager.set(AlarmManager.RTC_WAKEUP, date.getTime(), pendingIntent);
-		TextView gg = (TextView)findViewById(R.id.logcal);
-		gg.setText(date.getTime()+" alarm set.");
+		manager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
+		info.setText("Alarm set at "+calendar.getTime().toString());
 	}
-
 }

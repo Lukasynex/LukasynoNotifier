@@ -8,7 +8,6 @@ import android.view.View;
 public class ColorTransition {
 	private static boolean isStarted = false;
 	private static Handler handler = new Handler();
-	private static Activity activity;
 	private static View layout;
 
 	public static boolean isActive = true;
@@ -29,14 +28,13 @@ public class ColorTransition {
 
 	};
 
-	public static void start(Activity view, View lay) {
+	public static void start(View lay) {
 		if (!isStarted) {
 
 			handler.postDelayed(stepTimer, 0);
 
 			isStarted = true;
 		}
-		activity = view;
 		layout = lay;
 	}
 

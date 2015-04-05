@@ -38,7 +38,9 @@
         
         
         <receiver 
-            android:name="com.lukasynonotifier.setup.AlarmReceiver" >
+            android:name="com.lukasynonotifier.setup.AlarmReceiver"
+             >
+            
         </receiver>
         
     </application>

@@ -33,7 +33,7 @@ public class SetupAlarmActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		final LinearLayout lay = (LinearLayout) findViewById(R.id.LinearColorLay);
-		ColorTransition.start(this, lay);
+		ColorTransition.start(lay);
 	}
 
 	public void createElapsedAlarm(View v) {

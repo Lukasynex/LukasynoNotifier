@@ -9,7 +9,7 @@ public class Player {
 	private static MediaPlayer player;
 
 	private Player(Context context) {
-		player = MediaPlayer.create(context, R.raw.aaa);
+		player = MediaPlayer.create(context, R.raw.choice);
 	}
 
 	public static Player getInstance(Context context) {

@@ -31,8 +31,7 @@ public class ElapsedTimeActivity extends AbstractAlarmActivity {
 		setContentView(R.layout.elapsed_time_activity);
 		Player.getInstance(this);
 		final LinearLayout lay = (LinearLayout) findViewById(R.id.LinearLayoutelapsed);
-		ColorTransition.start(this, lay);
-	
+		ColorTransition.start(lay);
 	}
 
 	@Override
